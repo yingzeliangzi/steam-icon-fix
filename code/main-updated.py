@@ -50,17 +50,17 @@ def get_icon():
             continue
         if "clienticon" in list(game_info.keys()):
             if os.path.exists(os.path.join(steam_icon_folder, game_info["clienticon"] + '.ico')):
-                print("# %s \t\tICON ALREADY EXISTS, SKIP." % game_name)
+                print("# %s \t\t\033[93mICON ALREADY EXISTS, SKIP.\033[0m" % game_name)
                 continue
             game_icon_url = cloudflare_icon_url + str(app_id) + "/" + game_info["clienticon"] + '.ico'
             game_icon_filename = os.path.join(steam_icon_folder, game_info["clienticon"] + '.ico')
             urlretrieve(game_icon_url, game_icon_filename)
             if os.path.exists(game_icon_filename):
-                print("# %s \t\tICON DOWNLOAD SUCCESSFUL." % game_name)
+                print("# %s \t\t\033[92mICON DOWNLOAD SUCCESSFUL.\033[0m" % game_name)
             else:
-                print("# %s \t\tICON DOWNLOAD FAILED." % game_name)
+                print("# %s \t\t\033[91mICON DOWNLOAD FAILED.\033[0m" % game_name)
         else:
-            print("# %s \t\tDON'T HAVE ICON, SKIP." % game_name)
+            print("# %s \t\t\033[91mDON'T HAVE ICON, SKIP.\033[0m" % game_name)
     return True
 
 if __name__ == '__main__':
